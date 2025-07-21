@@ -18,7 +18,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/churchstatic" element={<App />} />
+        <Route path="/" element={<ChurchStaticHome />} />
         <Route path="/churchstatic" element={<ChurchStaticHome />} />
 <Route path="/churchstatic/about" element={<ChurchStaticAbout />} />
 <Route path="/churchstatic/gallery" element={<ChurchStaticGallery />} />
