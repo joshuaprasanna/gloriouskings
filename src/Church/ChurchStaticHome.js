@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import logo from "./glory.jpeg";
-import img1 from './yohan.jpeg';
-import img2 from './yohan2.jpeg';
+import img1 from './yohan66.jpeg';
+import img2 from './yohan2.jpg';
 import img3 from './yohan3.jpeg';
 import img4 from './pas.jpeg'; // Pastor image
-
+import img5 from './yohan55.jpeg';
 const ChurchStaticHome = () => {
-  const images = [img1, img2, img3];
+  const images = [img1,img2, img3,img5];
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -50,26 +50,47 @@ const ChurchStaticHome = () => {
           width: 100px;
           border-radius: 50%;
           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-          height:100px;
+          height: 100px;
         }
 
-        .pastor-image {
+        .pastor-box {
           position: absolute;
           right: 1rem;
           top: 50%;
           transform: translateY(-50%);
-          width: 100px;
+          text-align: center;
+        }
+
+        .pastor-image-square {
+          width: 150px;
           height: 150px;
           object-fit: cover;
-          border-radius: 90%;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          border-radius: 20px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .pastor-name {
+          margin-top: 0.3rem;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #2c2c54;
+          font-family: 'Roboto', sans-serif;
         }
 
         .church-title-centered {
           text-align: center;
           font-size: 3rem;
           font-family: 'Playfair Display', serif;
-          color:rgb(132, 101, 150);
+          font-weight: bold;
+          background: linear-gradient(90deg, #9d4edd, #5f0f40, #0f4c75);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 100% 50%; }
         }
 
         .marquee-bar {
@@ -94,8 +115,8 @@ const ChurchStaticHome = () => {
         }
 
         .slider {
-          max-width: 900px;
-          height: 500px;
+          max-width: 800px;
+          height: 800px;
           margin: auto;
           border-radius: 20px;
           overflow: hidden;
@@ -222,41 +243,17 @@ const ChurchStaticHome = () => {
           50% { text-shadow: 0 0 15px #ab47bcaa; }
           100% { text-shadow: 0 0 5px rgba(143, 64, 27, 0.53); }
         }
-          .pastor-box {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  text-align: center;
-}
-
-.pastor-image-square {
-  width: 170px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 50px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.pastor-name {
-  margin-top: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #2c2c54;
-  font-family: 'Roboto', sans-serif;
-}
-
+          
       `}</style>
 
       <div className="church-home">
         <div className="church-header">
           <img src={logo} alt="Glorious King Ministries Logo" className="church-logo" />
           <h1 className="church-title-centered">Glorious King Ministries</h1>
-    <div className="pastor-box">
-  <img src={img4} alt="Pastor" className="pastor-image-square"  style={{marginTop:"20px"}}/>
-  <p className="pastor-name">Ps. Yohan</p>
-</div>
-
+          <div className="pastor-box">
+            <img src={img4} alt="Pastor" className="pastor-image-square" />
+            <p className="pastor-name">Ps. Yohan</p>
+          </div>
         </div>
 
         <div className="marquee-bar">
