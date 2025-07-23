@@ -6,6 +6,7 @@ import logo from "./glory.jpeg";
 import img1 from './yohan.jpeg';
 import img2 from './yohan2.jpeg';
 import img3 from './yohan3.jpeg';
+import img4 from './pas.jpeg'; // Pastor image
 
 const ChurchStaticHome = () => {
   const images = [img1, img2, img3];
@@ -46,8 +47,21 @@ const ChurchStaticHome = () => {
           left: 1rem;
           top: 50%;
           transform: translateY(-50%);
-          width: 80px;
+          width: 100px;
           border-radius: 50%;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+          height:100px;
+        }
+
+        .pastor-image {
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100px;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 90%;
           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
@@ -55,7 +69,7 @@ const ChurchStaticHome = () => {
           text-align: center;
           font-size: 3rem;
           font-family: 'Playfair Display', serif;
-          color: #3a0ca3;
+          color:rgb(132, 101, 150);
         }
 
         .marquee-bar {
@@ -150,7 +164,6 @@ const ChurchStaticHome = () => {
           text-align: center;
         }
 
-        /* Contact Us Section */
         .contact-section {
           background: linear-gradient(to right, #e8eaf6, #e1bee7);
           padding: 3rem 2rem;
@@ -183,30 +196,54 @@ const ChurchStaticHome = () => {
         .contact-details a:hover {
           text-decoration: underline;
         }
-          .footer-credit {
-  margin-top: 4rem;
-  padding: 1.5rem 0;
+
+        .footer-credit {
+          margin-top: 4rem;
+          padding: 1.5rem 0;
+          text-align: center;
+          background: linear-gradient(to right, #ede7f6, #e1bee7, #ede7f6);
+          border-top: 2px solid rgba(0,0,0,0.05);
+          border-radius: 16px;
+          box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .glow-text {
+          font-size: 1.5rem;
+          font-weight: bold;
+          font-family: 'Playfair Display', serif;
+          background: linear-gradient(to right,rgb(60, 42, 141),rgb(29, 22, 11),rgb(27, 40, 154));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: glowPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+          0% { text-shadow: 0 0 5px #6a1b9a88; }
+          50% { text-shadow: 0 0 15px #ab47bcaa; }
+          100% { text-shadow: 0 0 5px rgba(143, 64, 27, 0.53); }
+        }
+          .pastor-box {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
   text-align: center;
-  background: linear-gradient(to right, #ede7f6, #e1bee7, #ede7f6);
-  border-top: 2px solid rgba(0,0,0,0.05);
-  border-radius: 16px;
-  box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
 }
 
-.glow-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: 'Playfair Display', serif;
-  background: linear-gradient(to right,rgb(60, 42, 141),rgb(29, 22, 11),rgb(27, 40, 154));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glowPulse 2.5s ease-in-out infinite;
+.pastor-image-square {
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-@keyframes glowPulse {
-  0% { text-shadow: 0 0 5px #6a1b9a88; }
-  50% { text-shadow: 0 0 15px #ab47bcaa; }
-  100% { text-shadow: 0 0 5pxrgba(143, 64, 27, 0.53); }
+.pastor-name {
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2c2c54;
+  font-family: 'Roboto', sans-serif;
 }
 
       `}</style>
@@ -215,6 +252,11 @@ const ChurchStaticHome = () => {
         <div className="church-header">
           <img src={logo} alt="Glorious King Ministries Logo" className="church-logo" />
           <h1 className="church-title-centered">Glorious King Ministries</h1>
+    <div className="pastor-box">
+  <img src={img4} alt="Pastor" className="pastor-image-square"  style={{marginTop:"20px"}}/>
+  <p className="pastor-name">Ps. Yohan</p>
+</div>
+
         </div>
 
         <div className="marquee-bar">
@@ -269,27 +311,22 @@ const ChurchStaticHome = () => {
           ))}
         </div>
 
-        {/* Contact Us Section */}
-      {/* Contact Us Section */}
-<motion.div className="contact-section" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
-  <h2>Contact Us</h2>
-  <div className="contact-details">
-    <p><strong>Pastor:</strong> Pr. Yohan</p>
-    <p><strong>Ministry:</strong> Glorious King Ministries</p>
-    <p><strong>Address:</strong> H.No. 9-62/1, Riksha Colony, Sarapaka, Bhurgampahad (Mandal),<br />Bhadradri Kothagudem (District), Telangana, India - <strong>507128</strong></p>
-    <p><strong>Email:</strong> <a href="mailto:gloriouskingministries@gmail.com">gloriouskingministries@gmail.com</a></p>
-    <p><strong>Phone:</strong> <a href="tel:+919705358623">+91 97053 58623</a></p>
-  </div>
-</motion.div>
-<div className="footer-credit">
-  <motion.span
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 0.3 }}
-  >
-    <span className="glow-text">✨ Designed & Developed by <strong>JOSHUA</strong> ✨</span>
-  </motion.span>
-</div>
+        <motion.div className="contact-section" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }}>
+          <h2>Contact Us</h2>
+          <div className="contact-details">
+            <p><strong>Pastor:</strong> Pr. Yohan</p>
+            <p><strong>Ministry:</strong> Glorious King Ministries</p>
+            <p><strong>Address:</strong> H.No. 9-62/1, Riksha Colony, Sarapaka, Bhurgampahad (Mandal),<br />Bhadradri Kothagudem (District), Telangana, India - <strong>507128</strong></p>
+            <p><strong>Email:</strong> <a href="mailto:gloriouskingministries@gmail.com">gloriouskingministries@gmail.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+919705358623">+91 97053 58623</a></p>
+          </div>
+        </motion.div>
+
+        <div className="footer-credit">
+          <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
+            <span className="glow-text">✨ Designed & Developed by <strong>JOSHUA</strong> ✨</span>
+          </motion.span>
+        </div>
       </div>
     </>
   );
