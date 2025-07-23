@@ -218,7 +218,7 @@ const ChurchStaticHome = () => {
         </div>
 
         <div className="marquee-bar">
-          <span>🔥 Join us for Sunday Worship - 10:00 AM | Bible Study - Wed 6:30 PM | Jesus is Lord 🙏</span>
+          <span>🔥 Lift up your heads, O ye gates; and be ye lift up, ye everlasting doors; and the King of glory shall come in 🙏</span>
         </div>
 
         <div className="slider">
