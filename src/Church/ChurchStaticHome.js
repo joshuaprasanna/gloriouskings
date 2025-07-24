@@ -6,11 +6,13 @@ import logo from "./glory.jpeg";
 import img1 from './yohan66.jpeg';
 import img2 from './yohan2.jpg';
 import img3 from './yohan3.jpeg';
-import img4 from './pas.jpeg'; // Pastor image
+import img4 from './pas.jpeg';
 import img5 from './yohan55.jpeg';
+
 const ChurchStaticHome = () => {
-  const images = [img1,img2, img3,img5];
+  const images = [img1, img2, img3, img5];
   const [current, setCurrent] = useState(0);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,12 +28,12 @@ const ChurchStaticHome = () => {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
-
         .church-home {
           font-family: 'Roboto', sans-serif;
           background: radial-gradient(circle at top left, #e3ffe7, #d9e7ff);
           padding: 2rem 1rem;
           min-height: 100vh;
+          position: relative;
         }
 
         .church-header {
@@ -74,7 +76,6 @@ const ChurchStaticHome = () => {
           font-size: 0.85rem;
           font-weight: 600;
           color: #2c2c54;
-          font-family: 'Roboto', sans-serif;
         }
 
         .church-title-centered {
@@ -243,15 +244,84 @@ const ChurchStaticHome = () => {
           50% { text-shadow: 0 0 15px #ab47bcaa; }
           100% { text-shadow: 0 0 5px rgba(143, 64, 27, 0.53); }
         }
-          
+
+        .sidebar-toggle {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1100;
+          background: #6a1b9a;
+          color: white;
+          padding: 0.6rem 1rem;
+          border: none;
+          font-size: 1.1rem;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: bold;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-menu {
+          position: fixed;
+          top: 0;
+          right: 0;
+          height: 100%;
+          width: 260px;
+          background: linear-gradient(to bottom, #ede7f6, #e1bee7);
+          box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+          padding: 2rem 1.5rem;
+          z-index: 1090;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .sidebar-menu a {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: #4a148c;
+          text-decoration: none;
+        }
+
+        .sidebar-menu a:hover {
+          text-decoration: underline;
+        }
       `}</style>
 
       <div className="church-home">
+        {/* Toggle Button */}
+        <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
+          ☰ Menu
+        </button>
+
+        {/* Sidebar */}
+        {sidebarOpen && (
+          <motion.div
+            className="sidebar-menu"
+            initial={{ x: 300 }}
+            animate={{ x: 0 }}
+            exit={{ x: 300 }}
+            transition={{ duration: 0.4 }}
+          >
+            {[
+              { label: '📷 Gallery', path: '/churchstatic/gallery' },
+              { label: '🙏 Ministries', path: '/churchstatic/ministries' },
+              { label: '📅 Events', path: '/churchstatic/events' },
+              { label: '🎧 Sermons', path: '/churchstatic/sermons' },
+              { label: '🧍 About', path: '/churchstatic/about' },
+              { label: '📞 Contact', path: '/churchstatic/contact' },
+            ].map((item, idx) => (
+              <Link key={idx} to={item.path} onClick={() => setSidebarOpen(false)}>{item.label}</Link>
+            ))}
+          </motion.div>
+        )}
+
+        {/* Header Section */}
         <div className="church-header">
           <img src={logo} alt="Glorious King Ministries Logo" className="church-logo" />
           <h1 className="church-title-centered">Glorious King Ministries</h1>
           <div className="pastor-box">
-            <img src={img4} alt="Pastor" className="pastor-image-square" />
+            <img src={img4} alt="Pastor" className="pastor-image-square"  style={{marginRight:"100px"}}/>
             <p className="pastor-name">Ps. Yohan</p>
           </div>
         </div>
@@ -283,23 +353,28 @@ const ChurchStaticHome = () => {
         </motion.div>
 
         <div className="church-sections">
-          {[{
-            title: 'Our Ministries',
-            desc: 'Empowering youth, women, families through biblical foundations.',
-            link: '/churchstatic/ministries'
-          }, {
-            title: 'Upcoming Events',
-            desc: 'Don’t miss our worship nights, prayer meetings and celebrations.',
-            link: '/churchstatic/events'
-          }, {
-            title: 'Photo Gallery',
-            desc: 'View the powerful moments we’ve shared as one church body.',
-            link: '/churchstatic/gallery'
-          }, {
-            title: 'Sermons',
-            desc: 'Watch, listen or read life-transforming messages from our pastors.',
-            link: '/churchstatic/sermons'
-          }].map((item, index) => (
+          {[
+            {
+              title: 'Our Ministries',
+              desc: 'Empowering youth, women, families through biblical foundations.',
+              link: '/churchstatic/ministries'
+            },
+            {
+              title: 'Upcoming Events',
+              desc: 'Don’t miss our worship nights, prayer meetings and celebrations.',
+              link: '/churchstatic/events'
+            },
+            {
+              title: 'Photo Gallery',
+              desc: 'View the powerful moments we’ve shared as one church body.',
+              link: '/churchstatic/gallery'
+            },
+            {
+              title: 'Sermons',
+              desc: 'Watch, listen or read life-transforming messages from our pastors.',
+              link: '/churchstatic/sermons'
+            }
+          ].map((item, index) => (
             <motion.div className="section-card" key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.2 }}>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
@@ -313,7 +388,8 @@ const ChurchStaticHome = () => {
           <div className="contact-details">
             <p><strong>Pastor:</strong> Pr. Yohan</p>
             <p><strong>Ministry:</strong> Glorious King Ministries</p>
-            <p><strong>Address:</strong> H.No. 9-62/1, Riksha Colony, Sarapaka, Bhurgampahad (Mandal),<br />Bhadradri Kothagudem (District), Telangana, India - <strong>507128</strong></p>
+            <p><strong>Address:</strong> H.No. 9-62/1, Riksha Colony, Sarapaka, Bhurgampahad (Mandal),<br />
+              Bhadradri Kothagudem (District), Telangana, India - <strong>507128</strong></p>
             <p><strong>Email:</strong> <a href="mailto:gloriouskingministries@gmail.com">gloriouskingministries@gmail.com</a></p>
             <p><strong>Phone:</strong> <a href="tel:+919705358623">+91 97053 58623</a></p>
           </div>
