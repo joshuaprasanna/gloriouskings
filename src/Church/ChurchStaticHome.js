@@ -322,7 +322,7 @@ const ChurchStaticHome = () => {
           <h1 className="church-title-centered">Glorious King Ministries</h1>
           <div className="pastor-box">
             <img src={img4} alt="Pastor" className="pastor-image-square"  style={{marginRight:"100px"}}/>
-            <p className="pastor-name">Ps. Yohan</p>
+            <p className="pastor-name">Ps. Yohans</p>
           </div>
         </div>
 
